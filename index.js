@@ -4,7 +4,7 @@ var taskController = require('./controllers/taskController');
 var userController = require('./controllers/userController');
 
 var db = require('./db');
-db.sync();
+db.sync({ force: true});
 
 var app = express();
 

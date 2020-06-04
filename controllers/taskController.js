@@ -9,8 +9,8 @@ var validateSession = require('../middleware/validate-session');
 router.get('/', (req, res) => res.send('Create tasks'));
 
 //Get All
-router.get('/all', (req, res) =>{
-    Task.findAll()
+router.get('/all', validateSession, (req, res) =>{
+    Task.findAll({ where: { owner: req.user.id } })
         .then(tasks =>res.status(200).json(tasks))
         .catch(err => res.status(500).json(err));
 });
@@ -22,7 +22,8 @@ router.post('/', validateSession, (req, res) => {
             dueDate: req.body.dueDate,
             timeOfTask: req.body.timeOfTask,
             priority: req.body.priority,
-            taskCompleted: req.body.taskCompleted
+            taskCompleted: req.body.taskCompleted,
+            owner: req.user.id
         };
 // console.log(taskFromRequest)
 

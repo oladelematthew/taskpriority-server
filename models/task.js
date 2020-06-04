@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
         dueDate: DataTypes.DATE,
         timeOfTask: DataTypes.INTEGER,
         priority: DataTypes.STRING,
-        taskCompleted: DataTypes.BOOLEAN
+        taskCompleted: DataTypes.BOOLEAN,
+        owner: DataTypes.INTEGER
     });
 };
