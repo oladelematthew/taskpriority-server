@@ -16,6 +16,10 @@ app.use('/tasks', taskController);
 
 app.use('/user', userController);
 
+app.get('/', (req, res) => {
+    res.send('This is taskPriority server')
+})
+
 app.listen(process.env.PORT, () => {
     console.log(`taskPriority spinning on ${process.env.PORT}`)
 });
